@@ -108,7 +108,6 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activity History</title>
     <link rel="stylesheet" href="activity_history.css">
-    <link rel="stylesheet" href="view_data.css">
     <style>
         /* Header Styles */
         header {
@@ -134,7 +133,6 @@ $result = $conn->query($sql);
                 <a href="activity_history.php" class="active">Activity History</a>
                 <a href="dashboard.php">Dashboard</a>
                 <a href="analytics.php">Analytics & Reporting</a>
-                <a href="view_data.php">User Record</a>
             </nav>
         </header>
 
