@@ -1,0 +1,73 @@
+-- Create database
+CREATE DATABASE IF NOT EXISTS facebook_analytics_db;
+USE facebook_analytics_db;
+
+-- Users table
+CREATE TABLE IF NOT EXISTS users (
+    user_id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255),
+    password VARCHAR(255),
+    joined_date DATE NOT NULL
+);
+
+-- Posts table
+CREATE TABLE IF NOT EXISTS posts (
+    post_id INT PRIMARY KEY,
+    user_id INT NOT NULL,
+    content_post TEXT,
+    image VARCHAR(255),
+    created_at DATETIME NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- Comments table
+CREATE TABLE IF NOT EXISTS comments (
+    comment_id INT PRIMARY KEY,
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    comment_text TEXT NOT NULL,
+    commented_at DATETIME NOT NULL,
+    FOREIGN KEY (post_id) REFERENCES posts(post_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- Likes table
+CREATE TABLE IF NOT EXISTS likes (
+    like_id INT PRIMARY KEY,
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    liked_at DATETIME NOT NULL,
+    FOREIGN KEY (post_id) REFERENCES posts(post_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- Shares table
+CREATE TABLE IF NOT EXISTS shares (
+    share_id INT PRIMARY KEY,
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    content_share TEXT,
+    image VARCHAR(255),
+    shared_at DATETIME NOT NULL,
+    FOREIGN KEY (post_id) REFERENCES posts(post_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- Hashtags table
+CREATE TABLE IF NOT EXISTS hashtags (
+    hashtag_id INT PRIMARY KEY,
+    post_id INT NOT NULL,
+    hashtag VARCHAR(255) NOT NULL,
+    FOREIGN KEY (post_id) REFERENCES posts(post_id)
+);
+
+-- Followers table
+CREATE TABLE IF NOT EXISTS followers (
+    follower_id INT PRIMARY KEY,
+    follower_user INT NOT NULL,
+    followed_user INT NOT NULL,
+    followed_at DATETIME NOT NULL,
+    FOREIGN KEY (follower_user) REFERENCES users(user_id),
+    FOREIGN KEY (followed_user) REFERENCES users(user_id)
+);
