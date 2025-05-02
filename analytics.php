@@ -175,7 +175,6 @@ $conn->close();
     <title>Advanced Analytics</title>
     <link rel="stylesheet" href="analytics.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="view_data.css">
     <style>
         header {
             text-align: center;
@@ -221,7 +220,6 @@ $conn->close();
                 <a href="activity_history.php">Activity History</a>
                 <a href="dashboard.php">Dashboard</a>
                 <a href="analytics.php" class="active">Analytics & Reporting</a>
-                <a href="view_data.php">User Record</a>
             </nav>
         </header>
 
